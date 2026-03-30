@@ -1,0 +1,10 @@
+[package]
+name = "c-dec-experiment"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.101"
+capstone = "0.14.0"
+goblin = "0.10.4"
+petgraph = "0.8.3"

@@ -1,0 +1,5 @@
+/target
+/testcases/*.out
+*.dot
+*.png
+ir_spec.md
