@@ -816,16 +816,14 @@ mod tests {
             .unwrap();
 
         // a0 は header で live → minimal も pruned も header に a0 のφを持つ
-        let has_a0_phi = |phis: &[SsaPhiNode]| {
-            phis.iter().any(|phi| phi.dst.base == Var::PReg(PReg(10)))
-        };
+        let has_a0_phi =
+            |phis: &[SsaPhiNode]| phis.iter().any(|phi| phi.dst.base == Var::PReg(PReg(10)));
         assert!(has_a0_phi(&minimal_header.phis));
         assert!(has_a0_phi(&pruned_header.phis));
 
         // pruned のφ数 <= minimal のφ数
-        let total_phis = |ssa: &SsaFunction| -> usize {
-            ssa.blocks.iter().map(|b| b.phis.len()).sum()
-        };
+        let total_phis =
+            |ssa: &SsaFunction| -> usize { ssa.blocks.iter().map(|b| b.phis.len()).sum() };
         assert!(total_phis(&pruned) <= total_phis(&minimal));
     }
 
